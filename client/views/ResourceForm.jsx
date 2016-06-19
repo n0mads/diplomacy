@@ -5,21 +5,22 @@ import Avatar from './Avatar'
 
 import Button from './forms/Button'
 import Input from './forms/Input'
+import Checkbox from './forms/Checkbox'
 
 
-export default class CharacterForm extends View {
+export default class ResourceForm extends View {
 
   componentWillMount() {
-    this.setState({ name: "", description: "", picture: "" })     
+    this.setState({ name: "", description: "", picture: "", countable: true })     
   }
 
   submit() {
     const form = Object.assign({}, this.state)
-    Meteor.call('characters.create', form)
+    Meteor.call('resources.create', form)
   }
 
   render() {
-    const { name, description, picture } = this.state
+    const { name, description, picture, countable } = this.state
 
     return <form className="form-horizontal">
       <div className="row">
@@ -28,20 +29,27 @@ export default class CharacterForm extends View {
             <Input
               value={ name }
               label="Nombre"
-              placeholder="Sam McCharacter"
+              placeholder="Agua Dulce"
               onChange={ this.setEvent('name') }
             />
 
             <Input
               value={ description }
-              label="Título"
+              label="Descripción"
+              placeholder="Esencial para la vida"
               onChange={ this.setEvent('description') }
             />
 
             <Input
               value={ picture }
-              label="Avatar"
+              label="Ícono"
               onChange={ this.setEvent('picture') }
+            />
+
+            <Checkbox
+              value={ countable }
+              label="Contable"
+              onChange={ this.setEvent('countable') }
             />
           </div>
 
