@@ -1,13 +1,9 @@
-import { Meteor } from 'meteor/meteor'
 import React from 'react'
-import { createContainer } from 'meteor/react-meteor-data'
 
-import { Characters } from '../../imports/collections'
-
-import { View } from './View'
+import View from './View'
 
 
-class CharacterList extends React.Component {
+export default class CharacterList extends View {
 
   render() {
     const { characters } = this.props
@@ -27,15 +23,3 @@ class CharacterList extends React.Component {
   }
 
 }
-
-
-function getData() {
-  Meteor.subscribe('characters')
-
-  return {
-    characters: Characters.find({}).fetch(),
-  }
-}
-
-
-export default createContainer(getData, CharacterList);
