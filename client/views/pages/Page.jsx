@@ -1,21 +1,24 @@
 import React from 'react'
 
+import { Meteor } from 'meteor/meteor'
+import { createContainer } from 'meteor/react-meteor-data'
+
 import Sidebar from '../layout/Sidebar'
 import View from '../View'
 
 
 export default class Page extends View {
 
-  render() {
-    return <div id="page">
-      <div className="col-sm-3">
-        <Sidebar />
-      </div>
+  getChildContext() {
+    const location = Object.assign({}, this.props.location)
+    location.params = this.props.routeParams
 
-      <div className="col-sm-9">
-        { this.renderContent() }
-      </div>
-    </div>
+    return { location }
   }
 
+}
+
+
+Page.childContextTypes = {
+  location: React.PropTypes.object
 }

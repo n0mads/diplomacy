@@ -1,14 +1,16 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor'
 import { render } from 'react-dom'
+import { Router, Route, browserHistory } from 'react-router'
 
 import CharacterPanel from './views/pages/CharacterPanel'
 
 
 function App() {
-  return <div className="container">
-    <CharacterPanel />
-  </div>
+  return <Router history={ browserHistory }>
+    <Route path="/" component={ CharacterPanel } />    
+    <Route path="/characters" component={ CharacterPanel } />    
+  </Router>
 }
 
 
