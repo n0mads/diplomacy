@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
-import { Characters } from '../imports/collections'
+import { Characters, Resources } from '../imports/collections'
 
 
 Meteor.methods({
@@ -18,7 +18,7 @@ Meteor.methods({
     return character
   },
 
-  'resouces.create': (form) => {
+  'resources.create': (form) => {
     const resource = {
       name       : form.name,
       picture    : form.picture,
