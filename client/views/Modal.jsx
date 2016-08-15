@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { closeModal } from '../../imports/modals'
+import { closeModal } from '../imports/modals'
 
-import View from '../View'
+import View from './View'
 
 
 export default class Modal extends View {
@@ -25,6 +25,16 @@ export default class Modal extends View {
         }
       </div>
     </div>
+  }
+
+  renderTitle() {
+    const { title } = this.props
+    return <span>{ title }</span>
+  }
+
+  renderContent() {
+    const { children } = this.props
+    return children
   }
 
   onCloseClick() {

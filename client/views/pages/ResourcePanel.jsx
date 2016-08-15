@@ -7,10 +7,11 @@ import { Resources } from '../../../imports/collections'
 import { openModal } from '../../imports/modals'
 
 import Page from './Page'
+import Modal from '../Modal'
+import Spinner from '../Spinner'
 import Dashboard from '../layout/Dashboard'
 import ResourceList from '../ResourceList'
-import CreateResource from '../modals/CreateResource'
-import Spinner from '../Spinner'
+import ResourceForm from '../ResourceForm'
 
 
 export default class ResourcePanel extends Page {
@@ -21,7 +22,7 @@ export default class ResourcePanel extends Page {
     if (! resources) {
       return <Spinner />
     }
-    console.log(resources)
+
     return <Dashboard>
       <div className="btn-group m-b" role="group" aria-label="...">
         <div className="btn btn-success" onClick={ this.onCreateClick }>Create</div>
@@ -32,7 +33,7 @@ export default class ResourcePanel extends Page {
   }
 
   onCreateClick() {
-    openModal(<CreateResource />)
+    openModal(<Modal title="Crear recurso"><ResourceForm /></Modal>)
   }
 }
 

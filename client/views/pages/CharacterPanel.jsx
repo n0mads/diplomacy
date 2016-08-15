@@ -7,10 +7,12 @@ import { Characters } from '../../../imports/collections'
 import { openModal } from '../../imports/modals'
 
 import Page from './Page'
+import Modal from '../Modal'
+import Spinner from '../Spinner'
 import Dashboard from '../layout/Dashboard'
 import CharacterList from '../CharacterList'
-import CreateCharacter from '../modals/CreateCharacter'
-import Spinner from '../Spinner'
+import CharacterForm from '../CharacterForm'
+import AssignResourceForm from '../AssignResourceForm'
 
 
 export default class CharacterPanel extends Page {
@@ -24,7 +26,8 @@ export default class CharacterPanel extends Page {
 
     return <Dashboard>
       <div className="btn-group m-b" role="group" aria-label="...">
-        <div className="btn btn-success" onClick={ this.onCreateClick }>Create</div>
+        <div className="btn btn-success" onClick={ this.onCreateClick }>Crear Personaje</div>
+        <div className="btn btn-primary" onClick={ this.onAssignClick }>Asignar Recurso</div>
       </div>
 
       <CharacterList characters={ characters } />
@@ -32,7 +35,11 @@ export default class CharacterPanel extends Page {
   }
 
   onCreateClick() {
-    openModal(<CreateCharacter />)
+    openModal(<Modal title="Crear personaje"><CharacterForm /></Modal>)
+  }
+
+  onAssignClick() {
+    openModal(<Modal title="Asignar recurso"><AssignResourceForm /></Modal>)
   }
 }
 
