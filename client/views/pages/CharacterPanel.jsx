@@ -23,7 +23,10 @@ export default class CharacterPanel extends Page {
     }
 
     return <Dashboard>
-      <div className="btn btn-primary" onClick={ this.onCreateClick }>Create</div>
+      <div className="btn-group m-b" role="group" aria-label="...">
+        <div className="btn btn-success" onClick={ this.onCreateClick }>Create</div>
+      </div>
+
       <CharacterList characters={ characters } />
     </Dashboard>
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import classNames from 'classnames'
 
 import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
@@ -10,10 +11,10 @@ import View from '../View'
 class Sidebar extends View {
 
   render() {
-    return <ul className="nav nav-pills nav-stacked">
-      <SidebarLink to="/characters" label="Personajes" />
-      <SidebarLink to="/resources" label="Recursos" />
-    </ul>
+    return <div id="sidebar">
+      <SidebarLink to="/characters" label="Characters" />
+      <SidebarLink to="/resources" label="Resources" />
+    </div>
   }
 }
 
@@ -33,10 +34,13 @@ class SidebarLink extends View {
     const { location } = this.context
     
     const activePath = '/' + location.pathname.split('/')[1]
+    const isActive = (activePath === to)
 
-    return <li className={ to === activePath ? 'active' : '' }>
-      <Link to={ to }>{ label }</Link>
-    </li>
+    return <Link className="sidebar-link" to={ to }>
+      <div className={ 'btn btn-block ' + (isActive ? 'btn-primary' : 'btn-default') }>
+        { label }
+      </div>
+    </Link>
   }
 }
 

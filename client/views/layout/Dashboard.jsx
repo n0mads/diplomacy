@@ -8,6 +8,7 @@ import { getActiveModal, closeModal } from '../../imports/modals'
 
 import View from '../View'
 import Sidebar from './Sidebar'
+import Header from './Header'
 
 
 class Dashboard extends View {
@@ -16,6 +17,9 @@ class Dashboard extends View {
     const { children, activeModal } = this.props
 
     return <div id="dashboard" className="container">
+      <div className="row">
+        <Header />
+      </div>
       <div className="row">
         <div className="col-sm-3">
           <Sidebar />

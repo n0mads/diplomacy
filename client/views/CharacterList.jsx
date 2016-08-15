@@ -1,6 +1,7 @@
 import React from 'react'
 
 import View from './View'
+import CharacterCard from './CharacterCard'
 
 
 export default class CharacterList extends View {
@@ -14,12 +15,7 @@ export default class CharacterList extends View {
   }
 
   renderItem(character, index) {
-    return <div className="character-item" key={ index }>
-      <img src={ character.avatar } className="avatar pull-left" alt={ character.name } />
-      <p className="name">{ character.name }</p>
-      <p className="title">{ character.title }</p>
-      <div className="clearfix" />
-    </div>
+    return <CharacterCard character={ character } key={ index } />
   }
 
 }
